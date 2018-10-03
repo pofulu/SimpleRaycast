@@ -30,6 +30,12 @@ public class RaycastHitSource : MonoBehaviour
 		}
 	}
 
+	private void Start()
+	{
+		from = Camera.main.transform;
+		to = transform;
+	}
+
 	private void Update()
 	{
 		RaycastHit hit;
@@ -64,8 +70,8 @@ public class RaycastHitSource : MonoBehaviour
 	{
 		if (debug)
 		{
-			//var ray = new Ray(from.position, to.position - from.position);
 			var validDebugDistance = distance == Mathf.Infinity ? 99999 : distance;
+			Gizmos.color = debugColor;
 			Gizmos.DrawRay(Ray.origin, Ray.direction * validDebugDistance);
 		}
 	}
